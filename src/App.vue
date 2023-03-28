@@ -5,18 +5,14 @@
     <div v-if="recipe">
       <h2>{{ recipe.title }}</h2>
       <img :src="recipe.image" alt="recipe image">
-      <p>{{ recipe.summary }}</p>
+      <p v-html="`${recipe.summary}`"></p>
       <h3>Ingredients</h3>
       <ul>
         <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ ingredient }}</li>
       </ul>
       <h3>Instructions</h3>
-      <ol>
-        <li v-for="(instruction, index) in recipe.analyzedInstructions" :key="index">
-          <ol>
-            <li v-for="(step, stepIndex) in instruction.steps" :key="stepIndex">{{ step.step }}</li>
-          </ol>
-        </li>
+      <ol v-for="(instruction, index) in recipe.analyzedInstructions" :key="index">
+        <li v-for="(step, stepIndex) in instruction.steps" :key="stepIndex">{{ step.step }}</li>
       </ol>
     </div>
   </div>
