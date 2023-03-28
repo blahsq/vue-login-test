@@ -8,7 +8,7 @@
       <p v-html="`${recipe.summary}`"></p>
       <h3>Ingredients</h3>
       <ul>
-        <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ ingredient }}</li>
+        <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">{{ ingredient.amount }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
       </ul>
       <h3>Instructions</h3>
       <ol v-for="(instruction, index) in recipe.analyzedInstructions" :key="index">
@@ -49,7 +49,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-ol {
+ul, ol {
   text-align: left;
 }
 </style>
